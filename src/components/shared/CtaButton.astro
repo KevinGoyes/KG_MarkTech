@@ -1,7 +1,10 @@
 ---
 import Button from "./Button.astro";
+const googleFormUrl = "https://forms.gle/ingakUY4CxgaJq1K6"; // Enlace actualizado
 ---
 
-<Button variant={"primary"} className={"min-w-max text-white"}>
-  <span class="flex relative z-[5] text-center"> Get Started Today</span>
-</Button>
+<a href={googleFormUrl} target="_blank" rel="noopener noreferrer">
+  <Button variant={"primary"} className={"min-w-max text-white"}>
+    <span class="flex relative z-[5] text-center">Get Started Today</span>
+  </Button>
+</a>
