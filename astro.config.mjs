@@ -1,10 +1,8 @@
 import { defineConfig } from "astro/config";
-
 import tailwind from "@astrojs/tailwind";
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
-  site: "https://vbartalis.github.io",
-  base: "/agency-template",
+  site: "https://kg-mark-tech.vercel.app", // Elimina la barra final
+  base: "/agency-template", // Asegúrate de que esta sea la ruta base correcta
 });
