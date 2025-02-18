@@ -3,5 +3,13 @@
       "env": {
         "NODE_ENV": "production"
       }
-    }
+    },
+    "outputDirectory": "dist",
+    "rewrites": [
+      {
+        "source": "/agency-template/_astro/:path*",
+        "destination": "/_astro/:path*"
+      }
+    ]
   }
+  
