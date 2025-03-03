@@ -20,27 +20,29 @@ export interface Props {
 const { className } = Astro.props;
 ---
 
-<section id="solutions" class=`flex flex-col ${className}`>
+<section id="solutions" class={`flex flex-col ${className}`}>
   {
     solutions.map((solution: SolutionsProps, index: number) => {
-      const oddIndex = index % 2 === 0;
-      const flexRow = oddIndex ? "midmd:flex-row-reverse" : "midmd:flex-row";
-      const bgColor = oddIndex
-        ? "bg-gray-200 dark:bg-gray-700"
-        : "bg-transparent";
+      const isOdd = index % 2 === 0;
+      const flexRow = isOdd ? "midmd:flex-row-reverse" : "midmd:flex-row";
+      const bgColor = isOdd
+        ? "bg-gray-200 dark:bg-gray-700" // Fondo gris para secciones impares
+        : "bg-white dark:bg-gray-800";   // Fondo blanco (o gris oscuro en modo oscuro) para secciones pares
+
       return (
-        <div class={`w-100 py-10 md:py-16 ${bgColor}`}>
+        <div class={`w-full py-10 md:py-16 ${bgColor}`}>
           <div
             class={`flex flex-col gap-10 lg:gap-12 ${flexRow} mx-auto max-w-7xl w-full`}
           >
-            <div class="max-w-md mx-auto w-11/12 flex-1 flex midmd:w-7/12 lg:w-1/2 flex-col">
+            <!-- Contenido de texto -->
+            <div class="max-w-md mx-auto w-11/12 flex-1 flex midmd:w-7/12 lg:w-1/2 flex-col" style="color: var(--heading-1);">
               <Title>
                 <GradiantText>{solution.title}</GradiantText>
               </Title>
-              <Paragraph className="mt-8 font-medium text:lg md:text-2xl">
+              <Paragraph className="mt-8 font-medium text-lg md:text-2xl">
                 {solution.painPoint}
               </Paragraph>
-              <Paragraph className="mt-3 ">
+              <Paragraph className="mt-3">
                 {solution.agitatepainPoint}
               </Paragraph>
               <Paragraph className="mt-3 font-medium">
@@ -48,6 +50,7 @@ const { className } = Astro.props;
               </Paragraph>
             </div>
 
+            <!-- Imagen -->
             <div class="max-w-md mx-auto midmd:max-w-none lg:mx-0 lg:pr-10 xl:pr-2 flex-1 flex w-11/12 midmd:w-5/12 lg:w-1/2 midmd:h-auto">
               <div class="w-full h-80 sm:h-96 midmd:h-full relative">
                 <Image
