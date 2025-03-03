@@ -27,13 +27,6 @@ const navItems = [
 ];
 ---
 
-<script>
-  if (!localStorage.getItem("theme")) {
-    localStorage.setItem("theme", "light");
-  }
-  document.documentElement.classList.remove("dark");
-</script>
-
 <header class="absolute inset-x-0 top-0 z-50 py-6">
   <Container>
     <nav class="w-full flex justify-between items-center relative">
@@ -45,18 +38,13 @@ const navItems = [
           <div class="inline-flex text-lg font-semibold text-heading-1">KG_MarkTech</div>
         </a>
       </div>
-      <button id="menu-toggle" class="lg:hidden p-2 rounded border border-box-border">
-        ☰
-      </button>
-      <div id="menu" class="hidden lg:flex flex-col lg:flex-row w-full lg:justify-between lg:items-center absolute lg:relative top-full lg:top-0 bg-gray-200 lg:bg-transparent p-4 lg:p-0">
-        <ul class="flex flex-col lg:flex-row w-full lg:justify-center lg:items-center text-lg text-heading-2">
-          { navItems.map((item, index) => (
-            <li class={`w-full text-center py-2 ${index !== 0 ? 'border-t border-gray-300' : ''}`}>
-              <Navitem {...item} />
-            </li>
-          )) }
+      
+      <!-- Menú solo visible en pantallas grandes -->
+      <div id="menu" class="hidden lg:flex flex-col lg:flex-row w-full lg:justify-between lg:items-center absolute lg:relative top-full lg:top-0 bg-body lg:bg-transparent p-4 lg:p-0">
+        <ul class="flex flex-col lg:flex-row gap-y-4 lg:gap-x-6 text-lg text-heading-2 w-full lg:justify-center lg:items-center">
+          { navItems.map((item) => <Navitem {...item} />) }
         </ul>
-        <div class="flex justify-center mt-4 lg:mt-0">
+        <div class="flex items-center mt-4 lg:mt-0">
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSeN5872yb_1VNk9z0qJtEFFrgiD_CBspF6Z8R-naFbtzL20vA/viewform?usp=header"
             target="_blank"
@@ -70,17 +58,3 @@ const navItems = [
     </nav>
   </Container>
 </header>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-
-    if (menuToggle && menu) {
-      menuToggle.addEventListener("click", function () {
-        menu.classList.toggle("hidden");
-      });
-    }
-  });
-</script>
-
-
